@@ -33,6 +33,11 @@ namespace Elasticsearch
                             {
                                 Type = "string",
                                 Format = "binary"
+                            },
+                            ["tags"] = new OpenApiSchema
+                            {
+                                Type = "string",
+                                // Description = "A comma-separated list of tags to associate with the uploaded file."
                             }
                         }
                     }

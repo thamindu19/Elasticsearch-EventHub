@@ -118,6 +118,7 @@ namespace Elasticsearch.Controllers
                         // },
                         file_id = $"{fileId}",
                         file_name = pdfFile.FileName,
+                        tags = tags,
                         message = text
                     };
 
@@ -126,6 +127,7 @@ namespace Elasticsearch.Controllers
 
                     // Serialize the message to JSON and create an EventData object
                     var eventData = new EventData(JsonConvert.SerializeObject(document));
+                    // var eventData = new EventData(text);
 
                     // Add the EventData object to the batch
                     eventBatch.TryAdd(eventData);

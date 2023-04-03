@@ -6,44 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6b989e2-5566-40ab-8f4b-5e1ea812db38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/ElasticsearchController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Document.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ElasticSearch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ElasticSearch/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/Elasticsearch/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/FileContentIndex/4fd2eefa-9aa2-404e-915f-a1730a5f7b64.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/FileContentIndex/6cc8e604-d4ff-441f-8aab-f44ad50e0684.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/FileContentIndex/a908ff9c-1310-4d60-8396-a38002e03a00.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/FileContentIndex/eaaf872b-82a0-4b64-800a-550f0423fcb5.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/Elasticsearch/v17/.futdcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Elasticsearch/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/Elasticsearch/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/elasticsearch.metadata.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/elasticsearch.metadata.v5.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/elasticsearch.projects.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/elasticsearch.projects.v5.2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/DocumentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/DocumentsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/EventHubController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/EventHubController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elasticsearch.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Elasticsearch.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormFileSwaggerFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormFileSwaggerFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ElasticsearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ElasticsearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Document.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Document.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/Elasticsearch.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/Elasticsearch.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/Elasticsearch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/Elasticsearch.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/Elasticsearch.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/Elasticsearch.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Elasticsearch.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +24,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8470c83990034898918f7f2bdbbc1cd84d1400/62/5bf0d2f7/ResponseBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8470c83990034898918f7f2bdbbc1cd84d1400/ce/e11ec40e/ElasticClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8229a190bf49bcce7011863742bf1c0b09374e97e63055741043e32a51b125/EventData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e19f9eaad0479f248bb7d4456e89bc4b43d5cbd2e60d9a55d634d984888c35/EventDataBatch.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -60,7 +35,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectId" id="2NP3IohHIhmS45WvGjrmBST80lW" />
   <component name="ProjectViewState">
@@ -132,8 +107,24 @@
       <workItem from="1680146876502" duration="11214000" />
       <workItem from="1680160305853" duration="10050000" />
       <workItem from="1680173189909" duration="387000" />
-      <workItem from="1680234162836" duration="12516000" />
+      <workItem from="1680234162836" duration="13101000" />
+      <workItem from="1680494185121" duration="17036000" />
     </task>
+    <task id="LOCAL-00001" summary="Add Functionalities on EventHub, Storage, PDF OCR, Elasticsearch">
+      <created>1680261900085</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680261900085</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add Functionalities on EventHub, Storage, PDF OCR, Elasticsearch">
+      <created>1680261964494</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680261964494</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +145,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Add Functionalities on EventHub, Storage, PDF OCR, Elasticsearch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Functionalities on EventHub, Storage, PDF OCR, Elasticsearch" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

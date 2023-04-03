@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Elasticsearch.Controllers
 {
@@ -16,8 +18,9 @@ namespace Elasticsearch.Controllers
     public class ElasticsearchController : ControllerBase
     {
         private readonly ElasticClient _elasticClient;
+        private readonly ILogger<ElasticsearchController> _logger;
 
-        public ElasticsearchController()
+        public ElasticsearchController(ILogger<ElasticsearchController> logger)
         {
             var connectionSettings = new ConnectionSettings(new Uri("https://4.193.154.104:9200/"))
                 .DefaultIndex(".ds-logs-azure.eventhub-event_hub-2023.03.29-000001")
@@ -25,6 +28,7 @@ namespace Elasticsearch.Controllers
                 .ServerCertificateValidationCallback(OnCertificateValidation)
                 .BasicAuthentication("elastic", "=OAxbvmXbY0oRydGrYWG");
             _elasticClient = new ElasticClient(connectionSettings);
+            _logger = logger;
         }
         
         // Disable SSL/TLS certificate validation
@@ -41,30 +45,60 @@ namespace Elasticsearch.Controllers
             //     return BadRequest("Query parameter is required.");
             // }
             
-            var searchResponse = await _elasticClient.SearchAsync<Document>(s => s
+            var response = await _elasticClient.SearchAsync<EsDocument>(s => s
                 .From(0)
                 .Size(100)
                 .Query(q => q
-                    .Match(m => m
-                        .Field(f => f.message)
-                        .Query(searchRequest.query)
+                    .Bool(b => b
+                        .Must(mu => mu
+                                .Match(m => m
+                                    .Field(f => f.azure.eventhub.message)
+                                    .Query(searchRequest.message)
+                                ),
+                            mu => mu
+                                .Wildcard(w => w
+                                    .Field(f => f.azure.eventhub.tags)
+                                    .Value($"*{searchRequest.tags}*")
+                                )
+                        )
                     )
                 )
                 .Source(src => src
                     .Includes(i => i
                         .Fields(
-                            f => f.file_id,
-                            f => f.file_name,
-                            f => f.message
+                            f => f.azure.eventhub.file_id,
+                            f => f.azure.eventhub.file_name,
+                            f => f.azure.eventhub.tags,
+                            f => f.azure.eventhub.message
                         )
                     )
                 )
             );
             
-            Console.WriteLine(searchResponse);
-            
-            var documents = searchResponse.Documents;
-            return Ok(documents);
+            if (response.IsValid)
+            {
+                var documents = new List<Document>();
+                foreach (var doc in response.Documents)
+                {
+                    var document = new Document
+                    {
+                        file_id = doc.azure.eventhub.file_id,
+                        file_name = doc.azure.eventhub.file_name,
+                        tags = doc.azure.eventhub.tags,
+                        message = doc.azure.eventhub.message
+                    };
+                    documents.Add(document);
+                }
+        
+                var json = JsonConvert.SerializeObject(documents, Formatting.Indented);
+                _logger.LogInformation($"Found {documents.Count} documents.");
+                return Ok(json);
+            }
+            else
+            {
+                _logger.LogError($"Error performing search: {response.DebugInformation}");
+                return StatusCode((int)response.ApiCall.HttpStatusCode);
+            }
         }
 
         // [HttpPost("PostData")]
@@ -103,13 +137,43 @@ namespace Elasticsearch.Controllers
 
             return Ok(response.Records);
         }
-    }
 
+        [HttpDelete("DeleteDocuments")]
+        public async Task DeleteFromIndex(string index)
+        {
+            var deleteResponse = await _elasticClient.DeleteByQueryAsync<Document>(q => q
+                .MatchAll()
+                .Index(index)
+            );
+
+            Console.WriteLine(deleteResponse);
+        }
+    }
+    
     public class SearchRequest
     {
-        public string query { get; set; }
+        public string message { get; set; }
+        public string tags { get; set; }
     }
 
+    public class EsDocument
+    {
+        public Azure azure;
+    }
+
+    public class Azure
+    {
+        public EventHub eventhub;
+    }
+    
+    public class EventHub
+    {
+        public string file_id { get; set; }
+        public string file_name { get; set; }
+        public string tags { get; set; }
+        public string message { get; set; }
+    }
+    
 }
 
 

@@ -36,8 +36,19 @@ namespace Elasticsearch
                             },
                             ["tags"] = new OpenApiSchema
                             {
-                                Type = "string",
-                                // Description = "A comma-separated list of tags to associate with the uploaded file."
+                                Type = "array",
+                                Items = new OpenApiSchema
+                                {
+                                    Type = "string"
+                                },
+                            },
+                            ["accessRoles"] = new OpenApiSchema
+                            {
+                                Type = "array",
+                                Items = new OpenApiSchema
+                                {
+                                    Type = "string"
+                                },
                             }
                         }
                     }

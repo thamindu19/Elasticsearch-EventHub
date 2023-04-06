@@ -9,6 +9,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Azure.Core;
 using Newtonsoft.Json;
 
 namespace Elasticsearch.Controllers
@@ -38,13 +39,14 @@ namespace Elasticsearch.Controllers
         }
 
         [HttpPost("Search")]
-        public async Task<IActionResult> Search([FromBody] SearchRequest searchRequest)
+        public async Task<IActionResult> Search([FromForm(Name = "message")] string message, [FromForm(Name = "tags")
+        ] string[] tags, [FromForm(Name = "userRole")] string userRole)
         {
             // if (string.IsNullOrEmpty(searchRequest.Query))
             // {
             //     return BadRequest("Query parameter is required.");
             // }
-            
+
             var response = await _elasticClient.SearchAsync<EsDocument>(s => s
                 .From(0)
                 .Size(100)
@@ -53,27 +55,50 @@ namespace Elasticsearch.Controllers
                         .Must(mu => mu
                                 .Match(m => m
                                     .Field(f => f.azure.eventhub.message)
-                                    .Query(searchRequest.message)
-                                ),
-                            mu => mu
-                                .Wildcard(w => w
-                                    .Field(f => f.azure.eventhub.tags)
-                                    .Value($"*{searchRequest.tags}*")
+                                    .Query(message)
                                 )
+                            // // All users can view public documents
+                            // mu => mu
+                            //     .Term(t => t
+                            //         .Field(f => f.azure.eventhub.access_roles)
+                            //         .Contains(false)
+                            //     ),
+                            // Users with the "admin" role can view all documents
+                            // q => userRole == "admin" && q
+                            //     .MatchAll(),
+                            // // Users with the "user" role can only view documents that they created
+                            // q => searchRequest.userRole == "user" && q
+                            //     .Term(t => t
+                            //         .Field(f => f.azure.eventhub.access_roles)
+                            //         .Value("username")
+                            //     )
+                        )
+                        .Filter(fi => fi
+                            .Terms(t => t
+                                .Field(f => f.azure.eventhub.tags)
+                                .Terms(tags)
+                            )
+                        )
+                        .Filter(fi => fi
+                            .Terms(t => t
+                                .Field(f => f.azure.eventhub.access_roles)
+                                .Terms(userRole)
+                            )
                         )
                     )
                 )
                 .Source(src => src
-                    .Includes(i => i
-                        .Fields(
-                            f => f.azure.eventhub.file_id,
-                            f => f.azure.eventhub.file_name,
-                            f => f.azure.eventhub.tags,
-                            f => f.azure.eventhub.message
+                            .Includes(i => i
+                                .Fields(
+                                    f => f.azure.eventhub.file_id,
+                                    f => f.azure.eventhub.file_name,
+                                    f => f.azure.eventhub.tags,
+                                    f => f.azure.eventhub.access_roles,
+                                    f => f.azure.eventhub.message
+                                )
+                            )
                         )
-                    )
-                )
-            );
+                    );
             
             if (response.IsValid)
             {
@@ -85,6 +110,7 @@ namespace Elasticsearch.Controllers
                         file_id = doc.azure.eventhub.file_id,
                         file_name = doc.azure.eventhub.file_name,
                         tags = doc.azure.eventhub.tags,
+                        access_roles = doc.azure.eventhub.access_roles,
                         message = doc.azure.eventhub.message
                     };
                     documents.Add(document);
@@ -100,7 +126,13 @@ namespace Elasticsearch.Controllers
                 return StatusCode((int)response.ApiCall.HttpStatusCode);
             }
         }
-
+        // mu => mu
+        //     .Wildcard(w => w
+        //     .Field(f => f.azure.eventhub.tags)
+        // .Value($"*{searchRequest.tags}*")
+        // ),
+        
+        
         // [HttpPost("PostData")]
         // public async Task<IActionResult> PostData()
         // {
@@ -150,11 +182,12 @@ namespace Elasticsearch.Controllers
         }
     }
     
-    public class SearchRequest
-    {
-        public string message { get; set; }
-        public string tags { get; set; }
-    }
+    // public class SearchRequest
+    // {
+    //     public string message { get; set; }
+    //     public string userRole { get; set; }
+    //     public string[] tags { get; set; }
+    // }
 
     public class EsDocument
     {
@@ -170,7 +203,8 @@ namespace Elasticsearch.Controllers
     {
         public string file_id { get; set; }
         public string file_name { get; set; }
-        public string tags { get; set; }
+        public string[] tags { get; set; }
+        public string[] access_roles { get; set; }
         public string message { get; set; }
     }
     

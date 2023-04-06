@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TD\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj": {}
+    "C:\\Users\\thamindub\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TD\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj": {
+    "C:\\Users\\thamindub\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TD\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj",
+        "projectUniqueName": "C:\\Users\\thamindub\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj",
         "projectName": "Elasticsearch",
-        "projectPath": "C:\\Users\\TD\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj",
-        "packagesPath": "C:\\Users\\TD\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TD\\Desktop\\Elasticsearch-EventHub\\obj\\",
+        "projectPath": "C:\\Users\\thamindub\\Desktop\\Elasticsearch-EventHub\\Elasticsearch.csproj",
+        "packagesPath": "C:\\Users\\thamindub\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thamindub\\Desktop\\Elasticsearch-EventHub\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thamindub\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

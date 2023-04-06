@@ -44,7 +44,7 @@ namespace Elasticsearch.Controllers
 
         [HttpPost("PostPdf")]
         public async Task<IActionResult> PostPdf([FromForm(Name = "pdfFile")] IFormFile pdfFile,
-            [FromForm(Name = "tags")] string tags)
+            [FromForm(Name = "tags")] string[] tags, [FromForm(Name = "accessRoles")] string[] accessRoles)
         {
             // Generate ID for PDF file
             var fileId = Guid.NewGuid();
@@ -64,10 +64,10 @@ namespace Elasticsearch.Controllers
 
             // Add the tags to the blob metadata
             IDictionary<string, string> metadata = new Dictionary<string, string>();
-            if (!string.IsNullOrEmpty(tags))
+            if (tags != null) 
             {
                 metadata.Add("file_name", pdfFile.FileName);
-                metadata.Add("tags", tags);
+                metadata.Add("tags", String.Join(',', tags));
             }
 
             await blobClient.SetMetadataAsync(metadata);
@@ -118,8 +118,9 @@ namespace Elasticsearch.Controllers
                         // },
                         file_id = $"{fileId}",
                         file_name = pdfFile.FileName,
-                        tags = tags,
-                        message = text
+                        tags = tags[0].Split(','),
+                        message = text,
+                        access_roles = accessRoles[0].Split(',')
                     };
 
                     // Create a batch of events
